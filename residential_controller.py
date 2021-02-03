@@ -218,6 +218,6 @@ def senario3():
     scenario1.requestFloor(3)
 
 
-senario1()
+
 
 
