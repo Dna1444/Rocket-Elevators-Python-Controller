@@ -41,7 +41,7 @@ class Column :
             elevator = Elevator(elevator_id, "idle", amountOfFloors, 1)
             self.elevator_list.append(elevator)
             elevator_id + 1
-
+    #function that will call elevator to the floor your on
     def requestElevator(self, floor, direction):
         elevator = self.findElevator(floor, direction)
         elevator.floor_request_list.append(floor)
@@ -50,7 +50,7 @@ class Column :
         elevator.operateDoors()
         return elevator
 
-        
+     #send point to each elevator to find the best one   
     def findElevator(self, floor, direction):
         bestElevatorInformation = {
             "bestElevator": None,
@@ -72,7 +72,7 @@ class Column :
 
         return bestElevatorInformation["bestElevator"]
     
-
+    #use point to check witch elevator is better
     def checkIfElevatorIsBetter(self, scoreToCheck, newElevator, bestElevatorInformation, floor):
         if scoreToCheck < bestElevatorInformation["bestScore"]:
             bestElevatorInformation['bestScore'] = scoreToCheck
