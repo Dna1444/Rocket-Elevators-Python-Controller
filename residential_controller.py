@@ -1,8 +1,8 @@
 import time
 
-elevator_id = 1
+
 floor_request_button_id = 1
-call_button_id = 1
+
 door_id = 1
 
 #my column class
@@ -22,25 +22,27 @@ class Column :
     def createCallButtons(self, amountOfFloors):
         number_of_floor = amountOfFloors
         button_floor = 1
+        call_button_id = 1
         
         for i in range(number_of_floor):
             if button_floor < amountOfFloors:
                 call_button = CallButton(call_button_id, "off", button_floor, "up")
                 self.call_button_list.append(call_button)
-                call_button_id + 1
+                call_button_id += 1
             if button_floor > 1:
                call_button = CallButton(call_button_id, "off", button_floor, "down")
                self.call_button_list.append(call_button)
-               call_button_id + 1
+               call_button_id += 1
             
             button_floor += 1
 # method for making my elevators
     def createElevators(self, amountOfElevator, amountOfFloors):
         number_of_elevator = amountOfElevator
+        elevator_id = 1
         for i in range(number_of_elevator):
             elevator = Elevator(elevator_id, "idle", amountOfFloors, 1)
             self.elevator_list.append(elevator)
-            elevator_id + 1
+            elevator_id += 1
     #function that will call elevator to the floor your on
     def requestElevator(self, floor, direction):
         elevator = self.findElevator(floor, direction)
@@ -160,8 +162,8 @@ class Elevator(Column):
     def operateDoors(self):
         self.door.status = "open"
         print(self.door.status, "door")
-        print("please wait 5 seconds")
-        time.sleep(5)
+        print("please wait 2 seconds")
+        time.sleep(2)
         self.door.status = "close"
         print(self.door.status)
 
@@ -216,8 +218,4 @@ def senario3():
     C1.checkRequestList()
     scenario1 = C1.requestElevator(10, "down")
     scenario1.requestFloor(3)
-
-
-
-
 
